@@ -1,0 +1,24 @@
+{
+  "name": "NeoGPS",
+  "version": "4.2.10",
+  "keywords": "Faster and smaller than all other GPS parsers",
+  "description": "NMEA and ublox GPS parser, configurable to use as few as 10 bytes of RAM.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XiRoad/NeoGPS"
+  },
+  "authors": {
+    "name": "SlashDevin",
+    "email": ""
+  },
+  "frameworks": "*",
+  "platforms": [
+    "avr",
+    "samd",
+    "sam",
+    "esp8266",
+    "esp32",
+    "arc32",
+    "native"
+  ]
+}
