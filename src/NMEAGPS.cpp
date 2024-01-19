@@ -1156,7 +1156,7 @@ bool NMEAGPS::parseDDMMYY( char chr )
           if (validateFields()) {
             uint8_t days =
               pgm_read_byte
-                ( &NeoGPS::time_t::days_in[m_fix.dateTime.date] );
+                ( &NeoGPS::time_structure::days_in[m_fix.dateTime.date] );
             if ((m_fix.dateTime.date < 1) || (days < m_fix.dateTime.date))
               sentenceInvalid();
           }

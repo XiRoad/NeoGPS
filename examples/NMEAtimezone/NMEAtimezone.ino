@@ -87,13 +87,13 @@ static const NeoGPS::clock_t  zone_offset  =
 
 //--------------------------
 
-void adjustTime( NeoGPS::time_t & dt )
+void adjustTime( NeoGPS::time_structure & dt )
 {
   NeoGPS::clock_t seconds = dt; // convert date/time structure to seconds
 
   #ifdef CALCULATE_DST
     //  Calculate DST changeover times once per reset and year!
-    static NeoGPS::time_t  changeover;
+    static NeoGPS::time_structure  changeover;
     static NeoGPS::clock_t springForward, fallBack;
 
     if ((springForward == 0) || (changeover.year != dt.year)) {
@@ -107,7 +107,7 @@ void adjustTime( NeoGPS::time_t & dt )
       changeover.seconds = 0;
       changeover.set_day();
       // Step back to a Sunday, if day != SUNDAY
-      changeover.date -= (changeover.day - NeoGPS::time_t::SUNDAY);
+      changeover.date -= (changeover.day - NeoGPS::time_structure::SUNDAY);
       springForward = (NeoGPS::clock_t) changeover;
 
       //  Calculate the fall changeover time (seconds)
@@ -116,7 +116,7 @@ void adjustTime( NeoGPS::time_t & dt )
       changeover.hours   = fallHour - 1; // to account for the "apparent" DST +1
       changeover.set_day();
       // Step back to a Sunday, if day != SUNDAY
-      changeover.date -= (changeover.day - NeoGPS::time_t::SUNDAY);
+      changeover.date -= (changeover.day - NeoGPS::time_structure::SUNDAY);
       fallBack = (NeoGPS::clock_t) changeover;
     }
   #endif

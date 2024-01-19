@@ -147,7 +147,7 @@ static void print( const __FlashStringHelper *str, bool valid, int8_t len )
   }
 }
 
-static void print( const NeoGPS::time_t & dt, bool valid, int8_t len )
+static void print(const NeoGPS::time_structure & dt, bool valid, int8_t len )
 {
   if (!valid) {
     printInvalid( len );

@@ -46,7 +46,7 @@ const uint8_t  DAYS_PER_WEEK      = 7;
 /**
  * Common date/time structure
  */
-struct time_t {
+struct time_structure {
 
   enum weekday_t {
     SUNDAY    = 1,
@@ -81,13 +81,13 @@ struct time_t {
   /**
    * Constructor.
    */
-  time_t() {}
+  time_structure() {}
 
   /**
    * Construct from seconds since the Epoch.
    * @param[in] c clock.
    */
-  time_t(clock_t c);
+  time_structure(clock_t c);
 
   /**
    * Initialize to January 1 of the Epoch Year, 00:00:00
@@ -300,6 +300,6 @@ class Print;
  * @param[in] t time structure.
  * @return iostream.
  */
-Print & operator <<( Print & outs, const NeoGPS::time_t &t );
+Print & operator <<( Print & outs, const NeoGPS::time_structure &t );
 
 #endif

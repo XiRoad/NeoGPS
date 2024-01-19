@@ -22,7 +22,7 @@
 
 #include <Print.h>
 
-Print & operator<<( Print& outs, const NeoGPS::time_t& t )
+Print & operator<<( Print& outs, const NeoGPS::time_structure& t )
 {
   outs.print( t.full_year( t.year ) );
   outs.write( '-' );
@@ -44,9 +44,9 @@ Print & operator<<( Print& outs, const NeoGPS::time_t& t )
   return outs;
 }
 
-using NeoGPS::time_t;
+using NeoGPS::time_structure;
 
-bool time_t::parse(str_P s)
+bool time_structure::parse(str_P s)
 {
   static size_t BUF_MAX = 32;
   char buf[BUF_MAX];
@@ -88,11 +88,11 @@ bool time_t::parse(str_P s)
   uint8_t  time_t::s_pivot_year    = 0;
 #endif
 
-const uint8_t time_t::days_in[] __PROGMEM = {
+const uint8_t time_structure::days_in[] __PROGMEM = {
   0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 };
 
-time_t::time_t(clock_t c)
+time_structure::time_structure(clock_t c)
 {
   uint16_t dayno = c / SECONDS_PER_DAY;
   c -= dayno * (uint32_t) SECONDS_PER_DAY;
@@ -133,7 +133,7 @@ time_t::time_t(clock_t c)
   seconds = c_ms - (minutes * SECONDS_PER_MINUTE);
 }
 
-void time_t::init()
+void time_structure::init()
 {
   seconds =
   hours   =
@@ -144,7 +144,7 @@ void time_t::init()
   day     = epoch_weekday();
 }
 
-time_t::operator clock_t() const
+time_structure::operator clock_t() const
 {
   clock_t c = days() * SECONDS_PER_DAY;
   if (hours < 18)
@@ -157,7 +157,7 @@ time_t::operator clock_t() const
   return (c);
 }
 
-uint16_t time_t::days() const
+uint16_t time_structure::days() const
 {
   uint16_t day_count = day_of_year();
 
@@ -168,7 +168,7 @@ uint16_t time_t::days() const
   return (day_count);
 }
 
-uint16_t time_t::day_of_year() const
+uint16_t time_structure::day_of_year() const
 {
   uint16_t dayno = date - 1;
   bool leap_year = is_leap();

@@ -40,7 +40,7 @@ public:
      * Sunday 00:00:00.  To save fairly expensive date/time calculations,
      * the UTC start of week is cached
      */
-    static void start_of_week( NeoGPS::time_t & now )
+    static void start_of_week( NeoGPS::time_structure & now )
       {
         now.set_day();
         s_start_of_week =
@@ -69,7 +69,7 @@ public:
      * Requires /leap_seconds/ and /start_of_week/.
      **/
     static bool from_TOWms
-      ( uint32_t time_of_week_ms, NeoGPS::time_t &dt, uint16_t &ms )
+      (uint32_t time_of_week_ms, NeoGPS::time_structure &dt, uint16_t &ms )
     {
 //trace << PSTR("from_TOWms(") << time_of_week_ms << PSTR("), sow = ") << start_of_week() << PSTR(", leap = ") << leap_seconds << endl;
       bool ok = (start_of_week() != 0) && (leap_seconds != 0);
