@@ -91,13 +91,15 @@
 //
 
 
-#if (                                              \
-      (ARDUINO < 10606)                          | \
-     ((10700  <= ARDUINO) & (ARDUINO <= 10799 )) | \
-     ((107000 <= ARDUINO) & (ARDUINO <= 107999))   \
-    )                                              \
-        &                                          \
-    !defined(ESP8266)  // PlatformIO Pull Request #82
+#if (                                                  \
+      (ARDUINO < 10606)                          |     \
+     ((10700  <= ARDUINO) & (ARDUINO <= 10799 )) |     \
+     ((107000 <= ARDUINO) & (ARDUINO <= 107999))       \
+    )                                                  \
+        &                                              \
+    !defined(ESP8266)  // PlatformIO Pull Request #82  \
+        &                                              \
+    !defined(UNIT_TEST)
 
   #define CONST_CLASS_DATA static const
   
