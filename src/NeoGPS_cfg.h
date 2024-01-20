@@ -97,7 +97,7 @@
      ((107000 <= ARDUINO) & (ARDUINO <= 107999))       \
     )                                                  \
         &                                              \
-    !defined(ESP8266)  // PlatformIO Pull Request #82  \
+    !defined(ESP8266)                                  \
         &                                              \
     !defined(UNIT_TEST)
 
