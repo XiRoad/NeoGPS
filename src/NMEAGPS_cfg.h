@@ -338,3 +338,4 @@
     defined( NMEAGPS_TIMESTAMP_FROM_PPS )
   #error You cannot enable both TIMESTAMP_FROM_INTERVAL and PPS in NMEAGPS_cfg.h!
 #endif
+#endif
